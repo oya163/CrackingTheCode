@@ -27,5 +27,11 @@
     <ClCompile Include="Chapter_1\UniqueCharInString_ver1.cpp">
       <Filter>Source Files\Chapter_1</Filter>
     </ClCompile>
+    <ClCompile Include="ReverseString.cpp">
+      <Filter>Source Files\Chapter_1</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckStringPermutation.cpp">
+      <Filter>Source Files\Chapter_1</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

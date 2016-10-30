@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClCompile Include="Chapter_1\UniqueCharInString.cpp" />
     <ClCompile Include="Chapter_1\UniqueCharInString_ver1.cpp" />
+    <ClCompile Include="CheckStringPermutation.cpp" />
+    <ClCompile Include="ReverseString.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1BAF7878-EE4C-4070-AFAE-0EA27FA9D25A}</ProjectGuid>
