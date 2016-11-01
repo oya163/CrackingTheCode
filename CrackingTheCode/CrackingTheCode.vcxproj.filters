@@ -13,5 +13,25 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Chap_1">
+      <UniqueIdentifier>{ea55660b-b428-4eac-97ec-785ce70a25d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Chapter_1">
+      <UniqueIdentifier>{f0a2d88d-2867-46f4-ba54-604d616ed3a2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Chapter_1\UniqueCharInString.cpp">
+      <Filter>Source Files\Chapter_1</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter_1\UniqueCharInString_ver1.cpp">
+      <Filter>Source Files\Chapter_1</Filter>
+    </ClCompile>
+    <ClCompile Include="ReverseString.cpp">
+      <Filter>Source Files\Chapter_1</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckStringPermutation.cpp">
+      <Filter>Source Files\Chapter_1</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
