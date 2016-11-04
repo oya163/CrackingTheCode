@@ -14,7 +14,7 @@ struct Node {
 	T data;
 	Node<T>* next;
 
-public:
+	Node<T>() : data(), next() {}
 	Node<T>(T d) {
 		this->data = d;
 		this->next = NULL;
@@ -24,7 +24,7 @@ public:
 template <class T>
 class NodeClass {
 public:
-	void insert(Node<T>* head, T val) {
+	void insert(Node<T>* &head, T val) {
 		Node<T>* newNode = new Node<T>(val);
 		if (head == NULL) {
 			head->data = val;
@@ -37,7 +37,7 @@ public:
 		}
 	}
 
-	void display(Node<T>* head) {
+	void display(Node<T>* &head) {
 		if (head == NULL) {
 			cout << "Empty list" << endl;
 		}
@@ -48,15 +48,18 @@ public:
 				curr = curr->next;
 			}
 		}
+		cout << endl;
 	}
 
-	void removeNode(Node<T>* node) {
+	bool removeNode(Node<T>* &node) {
 		if (node == NULL || node->next == NULL) {
-			return NULL;
+			return false;
 		}
 		else {
 			Node<T>* newNode = node->next;
-			node = newNode;
+			node->data = newNode->data;
+			node->next = newNode->next;
+			return true;
 		}
 	}
 
@@ -65,13 +68,14 @@ public:
 int main() {
 	int input = 1;
 	NodeClass<int> node;
-	Node<int>* newNode = new Node<int>(input);
+	Node<int>* newNode = new Node<int>();
 	while (input > 0) {
 		cin >> input;
 		node.insert(newNode, input);
 		node.display(newNode);
 	}
-
+	node.removeNode(newNode);
+	node.display(newNode);
 	delete newNode;
 
 }
