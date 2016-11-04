@@ -3,13 +3,14 @@
 
 using namespace std;
 
+//Default constructor
 LinkedList::LinkedList()
 {
 	head->data = 0;
 	head->next = NULL;
 }
 
-
+//Default destructor
 LinkedList::~LinkedList()
 {
 	Node* current = head;
