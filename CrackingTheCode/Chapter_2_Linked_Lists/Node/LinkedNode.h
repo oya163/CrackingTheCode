@@ -18,6 +18,7 @@ template <class T>
 class LinkedNode {
 private:
 	Node<T>* head;
+	int size = 0;
 
 public:
 	LinkedNode<T>();
@@ -25,6 +26,8 @@ public:
 	void insert(Node<T>* &head, T val);
 	void display(Node<T>* &head);
 	bool removeNode(Node<T>* &node);
+	void append(Node<T>* head, T val);
+	int nthToLast(Node<T>* head, int k);
 };
 
 #endif 
@@ -85,6 +88,38 @@ inline bool LinkedNode<T>::removeNode(Node<T>* &node) {
 		node->next = newNode->next;
 		return true;
 	}
+}
+
+//Appends the list
+template <class T>
+inline void LinkedNode<T>::append(Node<T>* head, T val) {
+	if (head == NULL) {
+		head->data = val;
+		head->next = NULL;
+	}
+	else {
+		Node<T>* current = head;
+		Node<T>* newNode = new Node<T>(val);
+		while (current->next) {
+			current = current->next;
+		}
+		current->next = newNode;
+	}
+	size++;
+}
+
+//Returns the counter for recursion times
+//And displays nth value from last position
+template <class T>
+inline int LinkedNode<T>::nthToLast(Node<T>* head, int k) {
+	if (head == NULL) {
+		return 0;
+	}
+	int i = nthToLast(head->next, k) + 1;
+	if (i == k) {
+		cout << "Kth element from the last = " << head->data << endl;
+	}
+	return i;
 }
 
 
