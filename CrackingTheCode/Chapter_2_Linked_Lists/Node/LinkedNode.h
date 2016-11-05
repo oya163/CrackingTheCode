@@ -17,10 +17,11 @@ struct Node {
 template <class T>
 class LinkedNode {
 private:
-	Node<T>* head;
+	//Node<T>* head;
 	int size = 1;
 
 public:
+	Node<T>* head;
 	LinkedNode<T>();
 	LinkedNode<T>(Node<T>* head);
 	~LinkedNode<T>();
@@ -31,6 +32,7 @@ public:
 	int nthToLast(Node<T>* head, int k);
 	int getIndexOf(Node<T>* &head, T val);
 	int getSize();
+	LinkedNode<T>* mergeList(LinkedNode<T>* &firstList, LinkedNode<T>* &secondList);
 };
 
 #endif 
@@ -152,4 +154,18 @@ inline int LinkedNode<T>::getIndexOf(Node<T>* &head, T val) {
 template <class T>
 inline int LinkedNode<T>::getSize() {
 	return size;
+}
+
+template <class T>
+inline LinkedNode<T>* LinkedNode<T>::mergeList(LinkedNode<T>* &firstList, LinkedNode<T>* &secondList) {
+	LinkedNode<T>* resultList = new LinkedNode<T>();
+	while (firstList->head) {
+		resultList->append(firstList->head->data);
+		firstList->head = firstList->head->next;
+	}
+	while (secondList->head) {
+		resultList->append(secondList->head->data);
+		secondList->head = secondList->head->next;
+	}
+	return resultList;
 }
