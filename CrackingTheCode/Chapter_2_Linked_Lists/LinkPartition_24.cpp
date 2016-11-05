@@ -12,38 +12,40 @@ using namespace std;
 
 template <class T>
 void linkPartition(Node<T>* &head, int x) {
-	LinkedNode<T> firstList;
-	LinkedNode<T> secondList;
+	LinkedNode<T>* firstList = new LinkedNode<T>();
+	LinkedNode<T>* secondList = new LinkedNode<T>();
 
 	Node<T>* current = head;
 	while (current) {
 		if (current->data < x) {
-			firstList.append(current, current->data);
+			firstList->append(current->data);
 		}
 		else {
-			secondList.append(current, current->data);
+			secondList->append(current->data);
 		}
 		current = current->next;
 	}
+	firstList->display();
+	secondList->display();
 }
 
 int main() {
 	Node<int>* head = new Node<int>(5);
-	LinkedNode<int> newList;
+	LinkedNode<int>* newList = new LinkedNode<int>(head);
 	int partAt = 0;
 
-	newList.append(head, 7);
-	newList.append(head, 8);
-	newList.append(head, 2);
-	newList.append(head, 3);
-	newList.append(head, 5);
-	newList.append(head, 6);
+	newList->append(7);
+	newList->append(8);
+	newList->append(2);
+	newList->append(3);
+	newList->append(5);
+	newList->append(6);
 
-	newList.display(head);
+	newList->display();
 
 	cout << "Input the x: "; cin >> partAt;
 
-	if (newList.getIndexOf(head, partAt) >= 0) {
+	if (newList->getIndexOf(head, partAt) >= 0) {
 		linkPartition(head, partAt);
 	}
 }
