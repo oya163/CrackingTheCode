@@ -6,17 +6,15 @@ using namespace std;
 //Default constructor
 LinkedList::LinkedList()
 {
-	head->data = 0;
-	head->next = NULL;
+	this->head = NULL;
 }
 
 //Default destructor
 LinkedList::~LinkedList()
 {
 	Node* current = head;
-	Node* temp = head;
 	while (current != NULL) {
-		temp = current->next;
+		Node* temp = current->next;
 		delete current;
 		current = temp;
 	}
@@ -32,11 +30,10 @@ LinkedList::LinkedList(int val) {
 
 //Insert element at beginning
 bool LinkedList::insert(int val) {
-	Node* newNode = new Node();
+	Node* newNode = new Node(val);
 	newNode->data = val;
 	if (head == NULL) {
 		head = newNode;
-		head->next = NULL;
 	}
 	else {
 		newNode->next = head;
@@ -48,13 +45,12 @@ bool LinkedList::insert(int val) {
 
 //Appends element at specified position
 bool LinkedList::appendList(int val) {
-	Node* newNode = new Node();
-	newNode->data = val;
+	Node* newNode = new Node(val);
 	if (head == NULL) {
 		head = newNode;
-		head->next = NULL;
 	}
 	else {
+		//Node* newNode = new Node(val);
 		Node* current = head;
 		while (current->next != NULL) {
 			current = current->next;

@@ -11,6 +11,9 @@ Oyashi
 struct Node {
 	int data;
 	Node *next;
+
+	Node() : data(), next() {}
+	Node(int d) : data(d), next(NULL) {}
 };
 
 
