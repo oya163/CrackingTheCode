@@ -10,28 +10,35 @@
 
 using namespace std;
 
+//Returns merged list after partition at given value
 template <class T>
-void linkPartition(Node<T>* &head, int x) {
-	LinkedNode<T>* firstList = new LinkedNode<T>();
-	LinkedNode<T>* secondList = new LinkedNode<T>();
+LinkedNode<T>* linkPartition(Node<T>* &head, int x) {
+	LinkedNode<T>* lowerList = new LinkedNode<T>();
+	LinkedNode<T>* greaterList = new LinkedNode<T>();
+	LinkedNode<T>* equalList = new LinkedNode<T>();
+	LinkedNode<T>* mergedList = new LinkedNode<T>();
 
 	Node<T>* current = head;
 	while (current) {
 		if (current->data < x) {
-			firstList->append(current->data);
+			lowerList->append(current->data);
+		}
+		else if (current->data == x) {
+			equalList->append(current->data);
 		}
 		else {
-			secondList->append(current->data);
+			greaterList->append(current->data);
 		}
 		current = current->next;
 	}
-	firstList->display();
-	secondList->display();
+	mergedList = mergedList->mergeList(lowerList, equalList);
+	return mergedList->mergeList(mergedList, greaterList);
 }
 
 int main() {
 	Node<int>* head = new Node<int>(5);
 	LinkedNode<int>* newList = new LinkedNode<int>(head);
+	LinkedNode<int>* finalList = new LinkedNode<int>();
 	int partAt = 0;
 
 	newList->append(7);
@@ -41,11 +48,14 @@ int main() {
 	newList->append(5);
 	newList->append(6);
 
+	cout << "Initial list: " << endl;
 	newList->display();
 
 	cout << "Input the x: "; cin >> partAt;
 
+	cout << "After partition and merge list: " << endl;
 	if (newList->getIndexOf(head, partAt) >= 0) {
-		linkPartition(head, partAt);
+		finalList = linkPartition(head, partAt);
+		finalList->display();
 	}
 }
