@@ -18,7 +18,7 @@ template <class T>
 class LinkedNode {
 private:
 	Node<T>* head;
-	int size = 0;
+	int size = 1;
 
 public:
 	LinkedNode<T>();
@@ -29,6 +29,7 @@ public:
 	void append(Node<T>* head, T val);
 	int nthToLast(Node<T>* head, int k);
 	int getIndexOf(Node<T>* &head, T val);
+	int getSize();
 };
 
 #endif 
@@ -128,17 +129,22 @@ template <class T>
 inline int LinkedNode<T>::getIndexOf(Node<T>* &head, T val) {
 	int index = 0;
 	if (head == NULL) {
-		return index;
+		return -1;
 	}
 	else {
 		Node<T>* current = head;
 		while (current) {
 			if (current->data == val) {
-				break;
+				return index;
 			}
 			index++;
 			current = current->next;
 		}
 	}
-	return index;
+	return -1;
+}
+
+template <class T>
+inline int LinkedNode<T>::getSize() {
+	return size;
 }
