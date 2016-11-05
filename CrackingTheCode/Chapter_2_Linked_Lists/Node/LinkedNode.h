@@ -27,7 +27,7 @@ public:
 	void insert(Node<T>* &head, T val);
 	void display();
 	bool removeNode(Node<T>* &node);
-	void append(Node<T>* head, T val);
+	void append(T val);
 	int nthToLast(Node<T>* head, int k);
 	int getIndexOf(Node<T>* &head, T val);
 	int getSize();
@@ -100,14 +100,13 @@ inline bool LinkedNode<T>::removeNode(Node<T>* &node) {
 
 //Appends the list
 template <class T>
-inline void LinkedNode<T>::append(Node<T>* head, T val) {
+inline void LinkedNode<T>::append(T val) {
+	Node<T>* newNode = new Node<T>(val);
 	if (head == NULL) {
-		head->data = val;
-		head->next = NULL;
+		head = newNode;
 	}
 	else {
 		Node<T>* current = head;
-		Node<T>* newNode = new Node<T>(val);
 		while (current->next) {
 			current = current->next;
 		}
