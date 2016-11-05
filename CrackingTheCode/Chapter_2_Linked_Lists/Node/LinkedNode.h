@@ -22,9 +22,10 @@ private:
 
 public:
 	LinkedNode<T>();
+	LinkedNode<T>(Node<T>* head);
 	~LinkedNode<T>();
 	void insert(Node<T>* &head, T val);
-	void display(Node<T>* &head);
+	void display();
 	bool removeNode(Node<T>* &node);
 	void append(Node<T>* head, T val);
 	int nthToLast(Node<T>* head, int k);
@@ -37,6 +38,11 @@ public:
 template <class T>
 inline LinkedNode<T>::LinkedNode() {
 	this->head = NULL;
+}
+
+template <class T>
+inline LinkedNode<T>::LinkedNode<T>(Node<T>* head) {
+	this->head = head;
 }
 
 template <class T>
@@ -65,7 +71,7 @@ inline void LinkedNode<T>::insert(Node<T>* &head, T val) {
 }
 
 template <class T>
-inline void LinkedNode<T>::display(Node<T>* &head) {
+inline void LinkedNode<T>::display() {
 	if (head == NULL) {
 		cout << "Empty list" << endl;
 	}
