@@ -28,6 +28,7 @@ public:
 	bool removeNode(Node<T>* &node);
 	void append(Node<T>* head, T val);
 	int nthToLast(Node<T>* head, int k);
+	int getIndexOf(Node<T>* &head, T val);
 };
 
 #endif 
@@ -122,4 +123,22 @@ inline int LinkedNode<T>::nthToLast(Node<T>* head, int k) {
 	return i;
 }
 
-
+//Returns the index of given value
+template <class T>
+inline int LinkedNode<T>::getIndexOf(Node<T>* &head, T val) {
+	int index = 0;
+	if (head == NULL) {
+		return index;
+	}
+	else {
+		Node<T>* current = head;
+		while (current) {
+			if (current->data == val) {
+				break;
+			}
+			index++;
+			current = current->next;
+		}
+	}
+	return index;
+}
