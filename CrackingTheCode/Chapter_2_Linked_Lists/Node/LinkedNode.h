@@ -7,10 +7,15 @@ struct Node {
 	T data;
 	Node<T>* next;
 
-	Node<T>() : data(), next() {}
+	Node<T>() : data(NULL), next(NULL) {}
 	Node<T>(T d) {
 		this->data = d;
 		this->next = NULL;
+	}
+
+	void setNext(Node<T>* const&more) {
+		this->next = more;
+		//more->next = NULL;
 	}
 };
 
