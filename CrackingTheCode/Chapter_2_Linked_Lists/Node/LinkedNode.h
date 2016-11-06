@@ -43,7 +43,7 @@ inline LinkedNode<T>::LinkedNode() {
 }
 
 template <class T>
-inline LinkedNode<T>::LinkedNode<T>(Node<T>* head) {
+inline LinkedNode<T>::LinkedNode(Node<T>* head) {
 	this->head = head;
 }
 
