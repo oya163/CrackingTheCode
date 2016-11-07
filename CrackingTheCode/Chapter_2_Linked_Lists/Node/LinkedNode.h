@@ -6,23 +6,24 @@ template <class T>
 struct Node {
 	T data;
 	Node<T>* next;
+	int nodeSize = 1;
 
 	Node<T>() : data(NULL), next(NULL) {}
 	Node<T>(T d) {
 		this->data = d;
 		this->next = NULL;
+		nodeSize++;
 	}
 
 	void setNext(Node<T>* const&more) {
 		this->next = more;
-		//more->next = NULL;
+		nodeSize++;
 	}
 };
 
 template <class T>
 class LinkedNode {
 private:
-	//Node<T>* head;
 	int size = 1;
 
 public:
