@@ -34,8 +34,10 @@ Node<T>* addEachNode (const Node<T>* const&firstList, const Node<T>* const&secon
 		value += secondList->data;
 	}
 
+	//To get the second digit after addition
 	result->data = (value % 10);
-
+	
+	//Recursive method
 	if (firstList != NULL || secondList != NULL) {
 		Node<T>* next = addEachNode(firstList == NULL ? NULL : firstList->next,
 			secondList == NULL ? NULL : secondList->next, (value / 10));
@@ -45,18 +47,28 @@ Node<T>* addEachNode (const Node<T>* const&firstList, const Node<T>* const&secon
 }
 
 int main() {
+	//Initialization FirstList of numbers
 	Node<int>* firstList = new Node<int>(7);
 	firstList->next = new Node<int>(1);
 	firstList->next->next = new Node<int>(6);
 
+	//Initialization SecondList of numbers
 	Node<int>* secondList = new Node<int>(5);
 	secondList->next = new Node<int>(9);
 	secondList->next->next = new Node<int>(2);
 
 	Node<int>* result = addEachNode(firstList, secondList, 0);
 
-	while (result) {
-		cout << result->data << "->";
+	//I have put result->next
+	//because its printing extra 0
+	while (result->next != NULL) {
+		cout << result->data;
+
+		//Just to format the output
+		if (result->next->next != NULL) {
+			cout << "->";
+		}
 		result = result->next;
 	}
+	cout << endl;
 }
