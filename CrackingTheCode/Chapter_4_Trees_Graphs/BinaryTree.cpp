@@ -38,12 +38,18 @@ int main() {
 	cout << "Level Order Traversal : ";
 	binaryTree.levelOrderTraverse();
 
+	cout << endl;
 	cout << "Remove node 10" << endl;
 	binaryTree.remove(10);
+	cout << endl;
 
-	cout << "After node removal" << endl;
+	cout << "After node removal, Level Order Traversal : " << endl;
 	binaryTree.levelOrderTraverse();
+	cout << endl;
 	
+	binaryTree.findMin();
+	binaryTree.findMax();
+
 	binaryTree.~BinaryTree();
 
 }

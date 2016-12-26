@@ -35,6 +35,7 @@ private:
 	Node<T>* searchTree(Node<T>* root, T val);
 	Node<T>* removeNode(Node<T>* root, T val);
 	Node<T>* findMin(Node<T>* root);
+	Node<T>* findMax(Node<T>* root);
 
 public:
 
@@ -47,6 +48,8 @@ public:
 	void postOrderTraverse();
 	void levelOrderTraverse();
 	void find(T val);
+	void findMin();
+	void findMax();
 	void remove(T val);
 	
 };
@@ -65,10 +68,11 @@ inline BinaryTree<T>::~BinaryTree() {
 
 template <class T>
 inline void BinaryTree<T>::destroyTree(Node<T>* root) {
-	if (root == NULL) return;
-	destroyTree(root->left);
-	destroyTree(root->right);
-	delete root;
+	if (root) {
+		destroyTree(root->left);
+		destroyTree(root->right);
+		delete root;
+	}
 }
 
 template <class T>
@@ -227,4 +231,29 @@ inline Node<T>* BinaryTree<T>::findMin(Node<T>* root) {
 		root = findMin(root->left);
 	}
 	return root;
+}
+
+template <class T>
+inline void BinaryTree<T>::findMin() {
+	Node<T>* minNode = findMin(root);
+	if (minNode) {
+		cout << "Minimum node value = " << minNode->data << endl;
+	}
+}
+
+template <class T>
+inline Node<T>* BinaryTree<T>::findMax(Node<T>* root) {
+	if (root == NULL) return NULL;
+	while (root->right != NULL) {
+		root = findMax(root->right);
+	}
+	return root;
+}
+
+template <class T>
+inline void BinaryTree<T>::findMax() {
+	Node<T>* maxNode = findMax(root);
+	if (maxNode) {
+		cout << "Maximum node vale = " << maxNode->data << endl;
+	}
 }
